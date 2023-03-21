@@ -39,6 +39,7 @@ If both players choose the same option, then it's a tie and the game is played a
 9. Optionally, keep track of the score between multiple games to determine an overall winner.
 
 ## Diagram 
+![diagram of algorithm](./img/design-1.png)
 
 ## Person’s role 
 "I am a one-man army" - Dinh Quy Pham 149435182
