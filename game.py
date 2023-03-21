@@ -8,33 +8,39 @@
 
 import random
 
-#list of options for the computer
+# list of options for the computer
 options = ["rock", "paper", "scissors"]
-
-print("Welcome to Rock, Paper, Scissors!")
-print("You will be playing against the computer.")
+play_again = True
 
 # Iterate repeatedly until the user inputs a valid choice.
-while True:
-    userOption = input("Enter your choice (rock, paper, or scissors): ")
-    if userOption in options:
-        break
-    print("Invalid choice. Please try again.")
+while play_again:
+    print("Let's play Rock, Paper, Scissors!")
+    for i in range(3):
+        player_choice = input("Enter your choice (rock/paper/scissors): ")
+        if player_choice.lower() in options:
+            break
+        elif i == 2:
+            print("Too many invalid choices. Exiting program.")
+            play_again = False
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
-# Randomly select an option for the computer.
-computerOption = random.choice(options)
+    if play_again:
+        # Randomly select an option for the computer.
+        computer_choice = random.choice(options)
+        print(f"Computer chose {computer_choice}.")
 
-print("You chose", userOption)
-print("The computer chose", computerOption)
+        # Determine the winner based on the options
+        if player_choice.lower() == computer_choice:
+            print("It's a tie!")
+        elif (player_choice.lower() == "rock" and computer_choice == "scissors") or \
+             (player_choice.lower() == "paper" and computer_choice == "rock") or \
+             (player_choice.lower() == "scissors" and computer_choice == "paper"):
+            print("You win!")
+        else:
+            print("Computer wins!")
 
-# Determine the winner based on the options
-if userOption == computerOption:
-    print("It's a tie!")
-elif userOption == "rock" and computerOption == "scissors":
-    print("You win! Rock beats scissors.")
-elif userOption == "paper" and computerOption == "rock":
-    print("You win! Paper beats rock.")
-elif userOption == "scissors" and computerOption == "paper":
-    print("You win! Scissors beat paper.")
-else:
-    print("You lose! Better luck next time.")
+        play_again_input = input("Do you want to play again? (yes/no): ")
+        if play_again_input.lower() != "yes":
+            play_again = False
